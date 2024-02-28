@@ -66,26 +66,13 @@
            'Reload privilege tables now? [Y/n]': 'Y'
        register: mysql_secure_output
        failed_when: "'Enter current password for root (enter for none):' not in mysql_secure_output.stdout"
-     - name: Create public IP address
-       azure_rm_publicipaddress:
-         resource_group: rg-cs-ansible
-         allocation_method: Static  
-         name: pip-cs-web
-       register: output_ip_address
-
-     - name: Output public IP
-       debug:
-          msg: "The public IP is {{ output_ip_address.state.ip_address }}"
-     - name: create database user 
-       mysql_user:
-          name: swapnali
-          password: 12345678
-          priv: '*.*:ALL'
-          state: present
-       ignore_errors: yes
-       mysql_db:
-         name: studentapp
-         state: present
+     - name: create user
+      shell:
+        cmd: >
+           mysql -u root -p12345 -e "CREATE USER 'deepak'@'localhost' IDENTIFIED BY '12345';
+           GRANT ALL PRIVILEGES ON *.* TO 'deepak'@'localhost';
+           FLUSH PRIVILEGES;"
+       
      - name: Create table
        mysql_query:
          login_user: swapnali
