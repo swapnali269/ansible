@@ -2,20 +2,24 @@
   hosts: all
   become: true
   tasks:
-     - name: install docker and mariadb
+     - name: Install required packages
        package:
-         name: "{{ packages }}"
-         state: present
+        name: "{{ packages }}"
+        state: present
        vars:
          packages:
-         - python3-pip
-         - mysqlclient
-         - PyMySQL 
-         - python3-pexpect 
-     - name: install java
-       yum:
-         name: java
-         state: latest
+          - python3-pip
+          - python3-pexpect
+          - mariadb105-server
+          - java
+
+     - name: Install Python libraries
+       pip:
+        name: "{{ item }}"
+        state: present
+       loop:
+        - pymysql
+        - mysqlclient
      - name: Download file for tomcat
        get_url:
         url: https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.99/bin/apache-tomcat-8.5.99.tar.gz
