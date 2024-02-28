@@ -38,7 +38,7 @@
        package:
         name: 
           - python3-pip
-          - mysql-devel
+          - mysql-community-devel
         state: present
      - name: install  MySQL-python
        pip:
