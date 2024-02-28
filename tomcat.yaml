@@ -3,14 +3,14 @@
   become: true
   tasks:
      - name: install docker and mariadb
-       pip:
+       package:
          name: "{{ packages }}"
          state: present
        vars:
          packages:
          - python3-pip
          - mysqlclient
-         - pymysql 
+         - PyMySQL 
          - python3-pexpect 
      - name: install java
        yum:
