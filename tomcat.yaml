@@ -33,15 +33,20 @@
        yum:
          name: mariadb105-server
          state: present
-     - name: test mysql_secure_installation
-  mysql_secure_installation:
-    login_password: ''
-    new_password: password22
-    user: root
-    login_host: localhost
-    hosts: ['localhost']
-    change_root_password: true
-    remove_anonymous_user: true
-    disallow_root_login_remotely: true
-    remove_test_db: true
-  register: mysql_secure
+     - name: Start MariaDB service
+       service:
+        name: mariadb
+        state: started
+        enabled: yes
+     - name: Secure MariaDB installation
+       expect:
+        command: mysql_secure_installation
+        responses:
+          'Enter current password for root (enter for none):': ''
+          'Set root password? [Y/n]': 'Y'
+          'New password:': 'your_root_password'
+          'Re-enter new password:': 'your_root_password'
+          'Remove anonymous users? [Y/n]': 'Y'
+          'Disallow root login remotely? [Y/n]': 'Y'
+          'Remove test database and access to it? [Y/n]': 'Y'
+          'Reload privilege tables now? [Y/n]': 'Y'
