@@ -2,10 +2,10 @@
   hosts: all
   become: true
   tasks:
-     - name: Install Python pexpect library
-        package:
-              name: python3-pexpect
-              state: present
+    - name: Install Python pexpect library
+      yum:
+        name: python3-pexpect
+        state: present
      - name: install java
        yum:
          name: java
