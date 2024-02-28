@@ -12,4 +12,13 @@
          src: /home/ec2-user/apache-tomcat-8.5.99.tar.gz
          dest: /opt/
          remote_src: yes
-     
+     - name: Download file for template
+       get_url: 
+        url: https://www.free-css.com/assets/files/free-css-templates/download/page296/little-fashion.zip
+        dest: /opt/apache-tomcat-8.5.99/webapps/
+        force_basic_auth: yes
+     - name: Unarchive a template file
+       unarchive:
+         src: /home/ec2-user/little-fashion.zip
+         dest: /opt/apache-tomcat-8.5.99/webapps/little-fashion.zip
+         remote_src: yes
