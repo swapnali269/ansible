@@ -1,0 +1,14 @@
+- name: install tomcat
+  hosts: all
+  become: true
+  tasks:
+     - name: Download file for tomcat
+       get_url:
+        url: https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.99/bin/apache-tomcat-8.5.99.tar.gz
+        dest: /home/ec2-user
+        force_basic_auth: yes
+     - name: Unarchive a file that is already on the remote machine
+       unarchive:
+         src: /home/ec2-user/apache-tomcat-8.5.99.tar.gz
+         dest: /opt/
+         remote_src: yes
