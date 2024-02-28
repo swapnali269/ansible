@@ -76,7 +76,7 @@
      - name: Output public IP
        debug:
           msg: "The public IP is {{ output_ip_address.state.ip_address }}"
-     - name: Create database user with name 'bob' and password '12345' with all database privileges
+     - name: Create database user with name 'swapnali' and password '12345678' with all database privileges
        mysql_user:
           name: swapnali
           password: 12345678
