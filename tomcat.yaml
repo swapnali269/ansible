@@ -8,7 +8,7 @@
           - python3-pip
         state: present
      - name: Download get-pip.py script
-      get_url:
+       get_url:
         url: https://bootstrap.pypa.io/get-pip.py
         dest: /tmp/get-pip.py
      - name: Install pip
