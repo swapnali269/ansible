@@ -2,10 +2,15 @@
   hosts: all
   become: true
   tasks:
-     - name: Install Python pexpect library
+     - name: install docker and mariadb
        yum:
-         name: python3-pexpect
-         state: present
+         name: "{{ packages }}"
+         state: latest
+       vars:
+         packages:
+         - python3-pip
+         - mysqlclient
+         - PyMySQL  
      - name: install java
        yum:
          name: java
