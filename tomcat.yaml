@@ -5,11 +5,11 @@
       - name: Install Python pexpect library
         package:
           name: python3-pexpect
-          state: present
+          state: latest
      - name: install java
        yum:
          name: java
-         state: present
+         state: latest
      - name: Download file for tomcat
        get_url:
         url: https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.99/bin/apache-tomcat-8.5.99.tar.gz
