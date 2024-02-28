@@ -26,3 +26,6 @@
          src: /opt/apache-tomcat-8.5.99/webapps/little-fashion.zip
          dest: /opt/apache-tomcat-8.5.99/webapps/
          remote_src: yes
+     - name: Tomcat startup
+       shell:
+         cmd: bash /opt/apache-tomcat-8.5.99/bin/startup.sh start
