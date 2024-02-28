@@ -38,12 +38,12 @@
        package:
         name: 
           - python3-pip
-          - mysqlclient
+          - mysql-devel
           - PyMySQL
         state: present
      - name: install  MySQL-python
        pip:
-        name:  MySQL-python
+        name: pymysql
         state: present
      - name: Secure MariaDB installation
        expect:
