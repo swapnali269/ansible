@@ -39,7 +39,7 @@
         name: 
           - python3-pip
           - mysql-devel
-          - PyMySQL
+          - mariadb
         state: present
      - name: install  MySQL-python
        pip:
