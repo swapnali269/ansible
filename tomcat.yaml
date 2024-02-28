@@ -72,12 +72,6 @@
          GRANT ALL PRIVILEGES ON *.* TO 'deepak'@'localhost';
          FLUSH PRIVILEGES;"
        ignore_errors: yes
-
-     - name: Copy my.cnf
-       copy:
-         src: ./files/my.cnf.1
-         dest: /etc/mysql/my.cnf
-     - name: Create database
        mysql_db:
          name: studentapp
          state: present
