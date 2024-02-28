@@ -7,7 +7,7 @@
         name: 
           - python3-pip
           - MySQL-python
-       state: present
+        state: present
      - name: Install PyMySQL using pip
        pip:
         name: 
