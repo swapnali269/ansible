@@ -66,6 +66,7 @@
            'Reload privilege tables now? [Y/n]': 'Y'
        register: mysql_secure_output
        failed_when: "'Enter current password for root (enter for none):' not in mysql_secure_output.stdout"
+     
      - name: create user and grant access to database
        command: >
          mysql -u root -p12345 -e "CREATE USER 'deepak'@'localhost' IDENTIFIED BY '12345';
