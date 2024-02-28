@@ -2,7 +2,15 @@
   hosts: all
   become: true
   tasks:
-    - name: Install the latest version of Apache
+    - name: install http
       yum:
-        name: httpd
+        name: http
         state: latest
+    - name: install docker and mariadb
+      yum:
+        name: {{ packages }} 
+        state: latest
+      vars:
+        packages:
+        - docker
+        - mariadb105-server        
