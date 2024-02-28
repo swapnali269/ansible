@@ -1,9 +1,8 @@
-- name: Update web servers
-  hosts: servers
-  remote_user: root
-
+- name: httpd
+  hosts: all
+  become: true
   tasks:
-  - name: Ensure apache is at the latest version
-    ansible.builtin.yum:
-      name: httpd
-      state: latest
+    - name: Install the latest version of Apache
+      yum:
+        name: httpd
+        state: latest
