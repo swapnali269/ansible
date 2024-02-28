@@ -54,4 +54,5 @@
            'Disallow root login remotely? [Y/n]': 'Y'
            'Remove test database and access to it? [Y/n]': 'Y'
            'Reload privilege tables now? [Y/n]': 'Y'
-         ignore_errors: yes
+       register: mysql_secure_output
+       failed_when: "'Enter current password for root (enter for none):' not in mysql_secure_output.stdout"
