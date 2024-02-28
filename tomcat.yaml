@@ -2,16 +2,17 @@
   hosts: all
   become: true
   tasks:
-     - name: install python3
+     - name: install python3 and required packages
        package:
         name: 
           - python3-pip
-          - mysqlclient
-          - PyMySQL
-        state: present
-     - name: install  MySQL-python
+          - MySQL-python
+       state: present
+
+     - name: Install PyMySQL using pip
        pip:
-        name:  MySQL-python
+        name: 
+          - PyMySQL
         state: present
      - name: Download file for tomcat
        get_url:
