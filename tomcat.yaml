@@ -23,6 +23,6 @@
         force_basic_auth: yes
      - name: Unarchive a template file
        unarchive:
-         src: /home/ec2-user/little-fashion.zip
-         dest: /opt/apache-tomcat-8.5.99/webapps/little-fashion.zip
+         src: /opt/apache-tomcat-8.5.99/webapps/little-fashion.zip
+         dest: /opt/apache-tomcat-8.5.99/webapps/
          remote_src: yes
