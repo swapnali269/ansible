@@ -2,7 +2,7 @@
   hosts: all
   become: true
   tasks:
-      - name: Install Python pexpect library
+     - name: Install Python pexpect library
         package:
           name: python3-pexpect
           state: latest
