@@ -2,24 +2,17 @@
   hosts: all
   become: true
   tasks:
-     - name: Install required packages
+     - name: install python3
        package:
-        name: "{{ packages }}"
-        state: present
-       vars:
-         packages:
+        name: 
           - python3-pip
-          - python3-pexpect
-          - mariadb105-server
-          - java
-
-     - name: Install Python libraries
-       pip:
-        name: "{{ item }}"
+          - mysqlclient
+          - PyMySQL
         state: present
-       loop:
-        - pymysql
-        - mysqlclient
+     - name: install  MySQL-python
+      pip:
+        name:  MySQL-python
+        state: present
      - name: Download file for tomcat
        get_url:
         url: https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.99/bin/apache-tomcat-8.5.99.tar.gz
