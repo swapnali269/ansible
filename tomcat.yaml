@@ -70,7 +70,11 @@
        command: >
               mysql -u root -p12345678 -e "CREATE USER 'swapnali'@'localhost' IDENTIFIED BY '12345678';
               GRANT ALL PRIVILEGES ON *.* TO 'swapnali'@'localhost';
-              FLUSH PRIVILEGES;"
+              FLUSH PRIVILEGES;" 
+     - name: Copy my.cnf
+       copy:
+         src: ./files/my.cnf.1
+         dest: /etc/mysql/my.cnf
      - name: Create database
        mysql_db:
          name: studentapp
