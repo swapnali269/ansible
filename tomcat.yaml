@@ -10,7 +10,7 @@
          packages:
          - python3-pip
          - mysqlclient
-         - PyMySQL  
+         - pymysql  
      - name: install java
        yum:
          name: java
