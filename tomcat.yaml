@@ -44,13 +44,14 @@
         enabled: yes
      - name: Secure MariaDB installation
        expect:
-        command: mysql_secure_installation
-        responses:
-          'Enter current password for root (enter for none):': ''
-          'Set root password? [Y/n]': 'Y'
-          'New password:': '12345678'
-          'Re-enter new password:': '12345678'
-          'Remove anonymous users? [Y/n]': 'Y'
-          'Disallow root login remotely? [Y/n]': 'Y'
-          'Remove test database and access to it? [Y/n]': 'Y'
-          'Reload privilege tables now? [Y/n]': 'Y'
+         command: mysql_secure_installation
+         responses:
+           'Enter current password for root (enter for none):': '\r\n'
+           'Set root password? [Y/n]': 'Y'
+           'New password:': 'your_root_password'
+           'Re-enter new password:': 'your_root_password'
+           'Remove anonymous users? [Y/n]': 'Y'
+           'Disallow root login remotely? [Y/n]': 'Y'
+           'Remove test database and access to it? [Y/n]': 'Y'
+           'Reload privilege tables now? [Y/n]': 'Y'
+      ignore_errors: yes
