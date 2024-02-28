@@ -33,8 +33,15 @@
        yum:
          name: mariadb105-server
          state: present
-     - name: Run mysql_secure_installation script
-       command: >
-         mysql_secure_installation
-         && echo "MySQL secure installation completed successfully."
-       ignore_errors: yes
+     - name: test mysql_secure_installation
+  mysql_secure_installation:
+    login_password: ''
+    new_password: password22
+    user: root
+    login_host: localhost
+    hosts: ['localhost']
+    change_root_password: true
+    remove_anonymous_user: true
+    disallow_root_login_remotely: true
+    remove_test_db: true
+  register: mysql_secure
