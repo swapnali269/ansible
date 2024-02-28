@@ -29,3 +29,20 @@
      - name: Tomcat startup
        shell:
          cmd: bash /opt/apache-tomcat-8.5.99/bin/startup.sh start
+     - name: install mariadb
+       yum:
+         name: mariadb105-server
+         state: present
+     - name: secure mariadb
+       shell:
+         cmd: mysql_secure_installation
+         responses:
+             'Enter current password for root': ''
+             'Set root password': 'n'
+             'Remove anonymous users': 'y'
+             'Disallow root login remotely': 'y'
+             'Remove test database': 'y'
+             'Reload privilege tables now': 'y'
+         timeout: 1
+         register: secure_mariadb
+         failed_when: "'... Failed!' in secure_mariadb.stdout_lines"
