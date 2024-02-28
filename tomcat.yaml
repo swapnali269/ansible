@@ -66,15 +66,15 @@
            'Reload privilege tables now? [Y/n]': 'Y'
        register: mysql_secure_output
        failed_when: "'Enter current password for root (enter for none):' not in mysql_secure_output.stdout"
-     - name: Create database
-       mysql_db:
-         name: studentapp
-         state: present
      - name: create user and grant access to database
        command: >
               mysql -u root -p12345678 -e "CREATE USER 'swapnali'@'localhost' IDENTIFIED BY '12345678';
               GRANT ALL PRIVILEGES ON *.* TO 'swapnali'@'localhost';
               FLUSH PRIVILEGES;"
+     - name: Create database
+       mysql_db:
+         name: studentapp
+         state: present
      - name: Create table
        mysql_query:
          login_user: swapnali
