@@ -49,9 +49,9 @@
           - pexpect
         state: present
      - name: install pymysql
-        pip:
-          name: pymysql
-          state: present
+       pip:
+         name: pymysql
+         state: present
      - name: Secure MariaDB installation
        expect:
          command: mysql_secure_installation
