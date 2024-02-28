@@ -67,12 +67,12 @@
        register: mysql_secure_output
        failed_when: "'Enter current password for root (enter for none):' not in mysql_secure_output.stdout"
      
-     - name: create user and grant access to database
-       expect:
-         command: >
-            mysql -u root -p12345 -e "CREATE USER 'deepak'@'localhost' IDENTIFIED BY '12345';
-            GRANT ALL PRIVILEGES ON *.* TO 'deepak'@'localhost';
-            FLUSH PRIVILEGES;"
+     - name: Create database user with name 'bob' and password '12345' with all database privileges
+       community.mysql.mysql_user:
+          name: swapnali
+          password: 12345678
+          priv: '*.*:ALL'
+          state: present
        ignore_errors: yes
        mysql_db:
          name: studentapp
