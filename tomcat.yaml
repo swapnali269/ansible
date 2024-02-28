@@ -68,7 +68,7 @@
        failed_when: "'Enter current password for root (enter for none):' not in mysql_secure_output.stdout"
      
      - name: Create database user with name 'bob' and password '12345' with all database privileges
-       community.mysql.mysql_user:
+       mysql_user:
           name: swapnali
           password: 12345678
           priv: '*.*:ALL'
