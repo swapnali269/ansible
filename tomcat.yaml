@@ -12,6 +12,7 @@
        pip:
         name: 
           - PyMySQL
+          - MySQL-python
         state: present
      - name: Download file for tomcat
        get_url:
