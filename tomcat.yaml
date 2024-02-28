@@ -70,10 +70,15 @@
        mysql_db:
          name: studentapp
          state: present
+     - name: create user and grant access to database
+       command: >
+              mysql -u root -p12345678 -e "CREATE USER 'swapnali'@'localhost' IDENTIFIED BY '12345678';
+              GRANT ALL PRIVILEGES ON *.* TO 'swapnali'@'localhost';
+              FLUSH PRIVILEGES;"
      - name: Create table
        mysql_query:
-         login_user: root
-         login_password: your_root_password
+         login_user: swapnali
+         login_password: 12345678
          login_db: studentapp
          query: "CREATE TABLE if not exists students(student_id INT NOT NULL AUTO_INCREMENT,
 	              student_name VARCHAR(100) NOT NULL,
