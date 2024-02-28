@@ -10,7 +10,7 @@
           - PyMySQL
         state: present
      - name: install  MySQL-python
-      pip:
+       pip:
         name:  MySQL-python
         state: present
      - name: Download file for tomcat
