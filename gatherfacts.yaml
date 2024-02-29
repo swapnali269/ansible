@@ -46,8 +46,8 @@
          state: present
        become: true
      - name: set fact task2
-         set_fact: 
-           my_os: "Linux"
+       set_fact: 
+          my_os: "Linux"
      - name: os info
        debug:
           msg: "{{my_os}}"
