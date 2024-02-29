@@ -31,5 +31,12 @@
        command: touch /home/ec2-user/file3
        become_user: ec2-user
        become: true
+     - name: print names                               ##loops
+       debug:
+          msg: "{{item}}" Bhondave
+       loop:
+          - Swapnali
+          - Arti
+          - Ajinkya
        
      
