@@ -33,7 +33,7 @@
        become: true
      - name: print names                               ##loops
        debug:
-          msg: "{{item}}" Bhondave
+          msg: "{{item}} Bhondave"
        loop:
           - Swapnali
           - Arti
