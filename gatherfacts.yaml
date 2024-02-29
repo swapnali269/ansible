@@ -7,5 +7,5 @@
          msg: "Hellow World"
      - name: print facts
        debug:
-         msg: {{block_available}}
+         msg: "{{block_available}}"
      
