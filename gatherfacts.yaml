@@ -32,10 +32,11 @@
        become_user: ec2-user
        become: true
      - name: crete  name files                               ##loops
-       command: touch '{{item}} Gunjkar'
+       command: touch '{{item}} Bhondave'
        loop:
           - Swapnali
-          - Nishant
+          - Arti
+          - Ajinkya
           
        
      
