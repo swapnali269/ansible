@@ -1,0 +1,8 @@
+- name: print msg
+  hosts: all 
+  become: true
+  tasks:
+     - name: gather facts
+       debug:
+         msg: "Hellow World"
+     
