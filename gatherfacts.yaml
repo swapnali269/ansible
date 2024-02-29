@@ -16,4 +16,7 @@
        yum:
          name: httpd
          state: present
+     - name: condition task first              ##conditions
+       command: sudo yum install java -y
+       when: ansible_os_family == "RedHat"
      
