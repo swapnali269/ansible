@@ -1,12 +1,28 @@
-- name: print msg
-  hosts: all 
-  tasks:
+
+
+##Gather facts:
+##In Ansible, "gathering facts" refers to the process of collecting information about the target hosts before executing tasks. This information includes details such as the operating system, IP address, available memory, disk space, and more. Gathering facts is essential for making informed decisions and ensuring that tasks are executed correctly on each target host.
+
+##To gather facts in Ansible, you typically use the gather_facts module, which is enabled by default in playbooks. However, you can control its behavior using the gather_facts parameter. 
+
+##(check facts with setup moddule)
+ ##ad-hoc
+ ## ansible servers -m setup -i hosts
+
+ - name: print msg
+   hosts: all 
+   tasks:
      - name: gather facts
        debug:
          msg: "Hellow World"
      - name: print facts                       ##gather facts
        debug:
          msg: "{{ansible_all_ipv4_addresses}}" 
+
+##Ignore Error 
+##In Ansible, you can instruct tasks to continue executing even if they encounter errors by using the ignore_errors parameter. This parameter allows you to control how Ansible handles errors during playbook execution.
+
+
      - name: ignore error                      ##ignore error                 
        debug: 
          msg: "{{abc.1234}}"
@@ -16,6 +32,13 @@
          name: httpd
          state: present
        become: true
+
+##Conditions 
+##In Ansible, conditions are used to control the execution of tasks based on certain criteria. You can define conditions using the when statement within tasks or plays.
+##Syntax: The when statement is used to specify the condition under which a task should be executed. It evaluates an expression and executes the task only if the expression evaluates to true.
+
+##Expression: The expression can be a simple comparison, a variable check, or a combination of conditions using logical operators like and, or, and not.
+
      - name: condition task 1              ##conditions
        command: sudo yum install java -y
        when: ansible_os_family == "RedHat"
@@ -27,16 +50,38 @@
        when: 
           - ansible_distribution == "Amazon"
           - ansible_distribution_major_version == "2023"
+
+
+## privilage escalation
+##Privilege escalation in Ansible allows you to execute tasks with elevated privileges, typically using the sudo command or becoming another user, such as the root user. 
+
      - name: privileges escalation                      ##privileges escalation
        command: touch /home/ec2-user/file3
        become_user: ec2-user
        become: true
+
+##Ansible Loops
+##  Loops allow you to iterate over a list of items and perform a task or set of tasks for each item in the list.
+##They are used when you need to repeat a task multiple times with different input parameters.
+##Loops are particularly useful for tasks such as creating multiple users, installing multiple packages, configuring multiple files, etc.
+##Loops can be defined using the with_items, with_list, or loop keywords, depending on the Ansible version.
+     
+
      - name: crete  name files                               ##loops
        command: touch '{{item}} Bhondave'
        loop:
           - Swapnali
           - Arti
           - Ajinkya
+
+
+##Set facts allow you to define custom variables based on the output of tasks or external data.
+##They are used to store data that can be reused later in the playbook or accessed by subsequent tasks.
+##Set facts are useful when you need to calculate values dynamically, retrieve data from the system, or store information for later use.
+##Facts can be set using the set_fact module or by using the ansible_facts keyword.
+  
+
+  
      - name: set facts                                    ##set fact
        set_fact:
          my_package: "tomcat9"
