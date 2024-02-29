@@ -37,13 +37,15 @@
           - Swapnali
           - Arti
           - Ajinkya
-     - name: set facts                                    ##set facts
-       set_facts:
+     - name: set facts                                    ##set fact
+       set_fact:
          my_package: "tomcat9"
      - name: install tomcat for set facts trial
        package:
-           name: "{{my_package}}"
-           state: present
+         name: "{{my_package}}"
+         state: present
+
+         
                                         
           
        
