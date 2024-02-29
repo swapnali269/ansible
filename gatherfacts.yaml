@@ -29,4 +29,5 @@
      - name: privileges escalation                      ##privileges escalation
        command: touch /home/ec2-user/file1
        remote_user: ec2-user
+       become: true
      
