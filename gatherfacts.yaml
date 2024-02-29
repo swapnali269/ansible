@@ -11,7 +11,7 @@
      - name: ignore error                      ##ignore error                 
        debug: 
          msg: "{{abc.1234}}"
-       ignore error: yes   
+       ignore_errors: yes   
      - name: ignore error trial 
        yum:
          name: http
