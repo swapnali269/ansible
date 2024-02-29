@@ -10,7 +10,8 @@
          msg: "{{ansible_all_ipv4_addresses}}" 
      - name: ignore error                      ##ignore error                 
        debug: 
-         msg: "{{abc.1234}}" 
+         msg: "{{abc.1234}}"
+       ignore error: yes   
      - name: ignore error trial 
        yum:
          name: http
