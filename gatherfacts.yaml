@@ -7,5 +7,5 @@
          msg: "Hellow World"
      - name: print facts
        debug:
-         msg: "{{block_available}}"
+         msg: "{{ansible_all_ipv4_addresses}}"
      
