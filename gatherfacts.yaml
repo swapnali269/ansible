@@ -18,5 +18,12 @@
          state: present
      - name: condition task first              ##conditions
        command: sudo yum install java -y
-       when: ansible_os_family == "Debian"
+       when: ansible_os_family == "RedHat"
+     - name: second task (with multiple conditions)
+       yum: 
+         name: mariadb105-server
+         state: present
+       when: 
+          - ansible_distribution == "Amazon"
+          - ansible_distribution_major_version == "2023"
      
