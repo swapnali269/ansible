@@ -5,4 +5,7 @@
      - name: gather facts
        debug:
          msg: "Hellow World"
+     - name: print facts
+       debug:
+         msg: {{block_available}}
      
