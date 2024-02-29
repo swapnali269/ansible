@@ -44,6 +44,7 @@
        package:
          name: "{{my_package}}"
          state: present
+       become: true
 
          
                                         
