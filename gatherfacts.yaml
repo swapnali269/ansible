@@ -5,7 +5,14 @@
      - name: gather facts
        debug:
          msg: "Hellow World"
-     - name: print facts
+     - name: print facts                       ##gather facts
        debug:
-         msg: "{{ansible_all_ipv4_addresses}}"
+         msg: "{{ansible_all_ipv4_addresses}}" 
+     - name: ignore error                      ##ignore error                 
+       debug: 
+         msg: "{{abc.1234}}" 
+     - name: ignore error trial 
+       yum:
+         name: http
+         state: present
      
